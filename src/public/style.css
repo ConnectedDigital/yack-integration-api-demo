@@ -1,0 +1,25 @@
+.transcription-list {
+    list-style: none;
+
+    padding: 0;
+    margin: 10px;
+}
+
+.transcription-list li {
+    display: flex;
+}
+
+.transcription-list li .header {
+    width: 125px;
+}
+
+.transcription-list li .transcription {
+    flex-grow: 1;
+}
+
+.transcription-list li .links {
+}
+
+.nav {
+    margin-bottom: 20px;
+}

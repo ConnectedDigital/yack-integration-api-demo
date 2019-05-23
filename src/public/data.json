@@ -1,0 +1,29 @@
+{
+  "fullUrl": "fullUrl",
+  "overlayUrl": "overlayUrl",
+  "callRoomId": 1,
+  "callUuid": "callUuid",
+  "callDuration": "callDuration",
+  "callStarted": "callStarted",
+  "callFinished": "callFinished",
+  "transcriptionMessages": [
+    {
+      "id": 2,
+      "offset": 1000,
+      "userName": "userName",
+      "text": "text",
+      "date": 1001,
+      "fullUrl": "fullUrl",
+      "overlayUrl": "overlayUrl"
+    },
+    {
+      "id": 3,
+      "offset": 1000,
+      "userName": "userName",
+      "text": "text",
+      "date": 1001,
+      "fullUrl": "fullUrl",
+      "overlayUrl": "overlayUrl"
+    }
+  ]
+}

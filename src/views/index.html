@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Yack.net external call integration demo</title>
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/static/style.css">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+    <script src="/static/socket.io/socket.io.js"></script>
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/static/client.js" defer></script>
+</head>
+<body>
+<header>
+    <h4>
+        Yack.net external call integration demo
+    </h4>
+</header>
+
+<main>
+    <div id="app">
+        <ul class="nav">
+            <li class="nav-item">
+                <button v-on:click="view = 'start-call'">Start Call</button>
+            </li>
+            <li class="nav-item">
+                <button v-on:click="view = 'transcription'">Transcription</button>
+            </li>
+        </ul>
+        <div v-if="view === 'transcription'" class="container">
+            <h5>Transcription</h5>
+            <ul id="transcription" class="transcription-list list-group">
+                <li v-for="msg in transcriptionData.transcriptionMessages" class="list-group-item">
+                    <div class="header">
+                        <span>{{ msg.date }}</span>
+                        <span>{{ msg.userName }}</span>
+                    </div>
+                    <div class="transcription">{{msg.text}}</div>
+                    <div class="links">
+                        <a v-bind:href="msg.fullUrl" target="_blank">full</a>
+                        <a v-bind:href="msg.overlayUrl" target="_blank">overlay</a>
+                    </div>
+                </li>
+            </ul>
+            <div v-if="!transcriptionData.transcriptionMessages.length">
+                No transcription messages found.
+            </div>
+        </div>
+        <div v-if="view === 'start-call'" class="container">
+            <h5>Start Call</h5>
+
+            <call-starter></call-starter>
+        </div>
+    </div>
+</main>
+
+<footer>
+
+</footer>
+
+<!-- include the Glitch button to show what the webpage is about and
+      to make it easier for folks to view source and remix -->
+<div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+
+<script src="https://button.glitch.me/button.js"></script>
+</body>
+</html>
