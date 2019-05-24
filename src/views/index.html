@@ -47,7 +47,7 @@
                 <li class="list-group-item"><span class="label">Call Uuid:</span> {{transcriptionData.callUuid}}</li>
                 <li class="list-group-item"><span class="label">Call duration:</span> {{transcriptionData.callDuration}}</li>
                 <li class="list-group-item"><span class="label">Call started:</span> {{transcriptionData.callStarted}}</li>
-                <li class="list-group-item"><span class="label">Call finished </span> {{transcriptionData.callFinished}}</li>
+                <li class="list-group-item"><span class="label">Call finished:</span> {{transcriptionData.callFinished}}</li>
                 <br/>
                 <h4>
                   Messages: 
@@ -55,10 +55,10 @@
                 <li v-for="msg in transcriptionData.transcriptionMessages" class="list-group-item message">
                     <div class="header">
                       <span><span class="label">id: </span>{{ msg.id }}</span>
-                      <span><span class="label">offset: </span>{{ msg.offset }}</span>
                       <span><span class="label">user: </span>{{ msg.userName }}</span>
                       <span><span class="label">text: </span>{{msg.text}}</span>
                       <span><span class="label">sent date: </span>{{ msg.date }}</span>
+                      <span><span class="label">offset: </span>{{ msg.offset }}</span>
                     </div>
                     <div class="links">
                         <a v-bind:href="msg.fullUrl" target="_blank">full</a>
