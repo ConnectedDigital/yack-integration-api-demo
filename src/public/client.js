@@ -36,7 +36,7 @@ Vue.component('call-starter', {
         link: function () {
             const pn = `phone-number=${this.phoneNumber}`;
             const callLink = this.callLink ? `&call-link=${this.callLink}` : '';
-            const callbackUrl = this.callLink ? `&callback-rl=${this.callbackUrl}` : '';
+            const callbackUrl = this.callLink ? `&callback-url=${this.callbackUrl}` : '';
             const callbackToken = this.callbackToken ? `&callback-token=${this.callbackToken}` : '';
             const teamId = this.teamId ? `&team-id=${this.teamId}` : '';
             const userEmail = this.userEmail ? `&user-email=${this.userEmail}` : '';
