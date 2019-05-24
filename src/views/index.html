@@ -29,15 +29,13 @@
 
 <main>
     <div id="app">
-        <ul class="nav">
-            <li class="nav-item">
-                <button v-on:click="view = 'start-call'">Start Call</button>
-            </li>
-            <li class="nav-item">
-                <button v-on:click="view = 'transcription'">Webhook data</button>
-            </li>
-        </ul>
-        <div v-if="view === 'transcription'" class="container">
+
+        <div>
+          <call-starter></call-starter>
+        </div>
+      <br/>
+      <br/>
+        <div>
             <h4>Call metadata:</h4>
             <ul id="transcription" class="transcription-list ">
  
@@ -69,11 +67,6 @@
             <div v-if="!transcriptionData.transcriptionMessages.length">
                 No transcription messages found.
             </div>
-        </div>
-        <div v-if="view === 'start-call'" class="container">
-            <h5>Start Call</h5>
-
-            <call-starter></call-starter>
         </div>
     </div>
 </main>

@@ -1,38 +1,41 @@
-.transcription-list {
-    list-style: none;
+#app {
+  margin: 20px;
+}
 
-    padding: 0;
-    margin: 10px;
+.transcription-list {
+  list-style: none;
+
+  padding: 0;
+  margin: 10px;
 }
 
 .transcription-list li {
-    display: flex;
+  display: flex;
 }
 
 .transcription-list li .header {
-    display: flex;
-    flex-direction: column;
-    width: 125px;
+  display: flex;
+  flex-direction: column;
+  width: 125px;
 }
 
 .transcription-list li .transcription {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .transcription-list li .links {
 }
 
 .nav {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .label {
-    font-weight: bold;
-    margin-right: 5px;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .message {
-    flex-direction: row;
-    justify-content: space-between;
-
+  flex-direction: row;
+  justify-content: space-between;
 }

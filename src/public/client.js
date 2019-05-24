@@ -25,7 +25,7 @@ Vue.component('call-starter', {
         baseUrl: 'https://systest.yack.net/api/v3/public/integration/call-setup',
         phoneNumber: '',
         callLink: '',
-        callbackUrl: '',
+        callbackUrl: window.location + '/test',
         callbackToken: '',
         teamId: 0,
         userEmail: '',
