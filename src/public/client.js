@@ -34,14 +34,14 @@ Vue.component('call-starter', {
     }),
     computed: {
         link: function () {
-            const pn = `phone-number=${this.phoneNumber}`;
-            const callLink = this.callLink ? `&call-link=${this.callLink}` : '';
-            const callbackUrl = this.callbackUrl ? `&callback-url=${this.callbackUrl}` : '';
-            const callbackToken = this.callbackToken ? `&callback-token=${this.callbackToken}` : '';
-            const teamId = this.teamId ? `&team-id=${this.teamId}` : '';
+            const pn = `phone-number=${encodeURIComponent(this.phoneNumber)}`;
+            const callLink = this.callLink ? `&call-link=${encodeURIComponent(this.callLink)}` : '';
+            const callbackUrl = this.callbackUrl ? `&callback-url=${encodeURIComponent(this.callbackUrl)}` : '';
+            const callbackToken = this.callbackToken ? `&callback-token=${encodeURIComponent(this.callbackToken)}` : '';
+            const teamId = this.teamId ? `&team-id=${encodeURIComponent(this.teamId)}` : '';
             const userEmail = this.userEmail ? `&user-email=${encodeURIComponent(this.userEmail)}` : '';
-            const transcriptRequired = this.transcriptRequired ? `&transcript-required=${this.transcriptRequired}` : '';
-            const transcriptUpdateNotification = this.transcriptUpdateNotification ? `&transcript-update-notification=${this.transcriptUpdateNotification}` : '';
+            const transcriptRequired = this.transcriptRequired ? `&transcript-required=${encodeURIComponent(this.transcriptRequired)}` : '';
+            const transcriptUpdateNotification = this.transcriptUpdateNotification ? `&transcript-update-notification=${encodeURIComponent(this.transcriptUpdateNotification)}` : '';
             return `${this.baseUrl}?${pn}${callLink}${callbackUrl}${callbackToken}${teamId}${userEmail}${transcriptRequired}${transcriptUpdateNotification}`;
         },
     },
