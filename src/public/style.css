@@ -10,6 +10,7 @@
 }
 
 .transcription-list li .header {
+    flex-direction: column;
     width: 125px;
 }
 
@@ -22,4 +23,15 @@
 
 .nav {
     margin-bottom: 20px;
+}
+
+.label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.message {
+    flex-direction: row;
+    justify-content: space-between;
+
 }
