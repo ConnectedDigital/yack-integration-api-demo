@@ -1,17 +1,17 @@
 const socket = io();
 
 socket.on('message-received', msg => {
-    app.transcriptionData.transcriptionMessages = msg.transcriptionMessages
+    app.transcriptionData = msg
 });
 
 const transcriptionData = {
-    fullUrl: "fullUrl",
-    overlayUrl: "overlayUrl",
-    callRoomId: 1,
-    callUuid: "callUuid",
-    callDuration: "callDuration",
-    callStarted: "callStarted",
-    callFinished: "callFinished",
+    fullUrl: "",
+    overlayUrl: "",
+    callRoomId: null,
+    callUuid: "",
+    callDuration: "",
+    callStarted: "",
+    callFinished: "",
     transcriptionMessages: []
 };
 const viewModel = {
@@ -22,7 +22,7 @@ const viewModel = {
 
 Vue.component('call-starter', {
     data: () => ({
-        baseUrl: 'https://my.yack.net/api/v3/public/integration/call-setup',
+        baseUrl: 'https://systest.yack.net/api/v3/public/integration/call-setup',
         phoneNumber: '',
         callLink: '',
         callbackUrl: '',
@@ -36,10 +36,10 @@ Vue.component('call-starter', {
         link: function () {
             const pn = `phone-number=${this.phoneNumber}`;
             const callLink = this.callLink ? `&call-link=${this.callLink}` : '';
-            const callbackUrl = this.callLink ? `&callback-url=${this.callbackUrl}` : '';
+            const callbackUrl = this.callbackUrl ? `&callback-url=${this.callbackUrl}` : '';
             const callbackToken = this.callbackToken ? `&callback-token=${this.callbackToken}` : '';
             const teamId = this.teamId ? `&team-id=${this.teamId}` : '';
-            const userEmail = this.userEmail ? `&user-email=${this.userEmail}` : '';
+            const userEmail = this.userEmail ? `&user-email=${encodeURIComponent(this.userEmail)}` : '';
             const transcriptRequired = this.transcriptRequired ? `&transcript-required=${this.transcriptRequired}` : '';
             const transcriptUpdateNotification = this.transcriptUpdateNotification ? `&transcript-update-notification=${this.transcriptUpdateNotification}` : '';
             return `${this.baseUrl}?${pn}${callLink}${callbackUrl}${callbackToken}${teamId}${userEmail}${transcriptRequired}${transcriptUpdateNotification}`;
@@ -103,7 +103,7 @@ Vue.component('call-starter', {
         </div>
     </div>  
     <div><a v-bind:href="link" target="_blank">{{link}}</a></div>
-    <div><button v-on:click="openInNewWindow">Open</button></div>
+    <div><button v-on:click="openInNewWindow">Start call</button></div>
 </div>
 
     `

@@ -34,18 +34,32 @@
                 <button v-on:click="view = 'start-call'">Start Call</button>
             </li>
             <li class="nav-item">
-                <button v-on:click="view = 'transcription'">Transcription</button>
+                <button v-on:click="view = 'transcription'">Webhook data</button>
             </li>
         </ul>
         <div v-if="view === 'transcription'" class="container">
-            <h5>Transcription</h5>
-            <ul id="transcription" class="transcription-list list-group">
-                <li v-for="msg in transcriptionData.transcriptionMessages" class="list-group-item">
+            <h4>Call metadata:</h4>
+            <ul id="transcription" class="transcription-list ">
+ 
+              <li class="list-group-item"><span class="label">Full url:</span> {{transcriptionData.fullUrl}}</li>
+                <li class="list-group-item"><span class="label">Overlay url:</span> {{transcriptionData.overlayUrl}}</li>
+                <li class="list-group-item"><span class="label">Room Id:</span> {{transcriptionData.callRoomId}}</li>
+                <li class="list-group-item"><span class="label">Call Uuid:</span> {{transcriptionData.callUuid}}</li>
+                <li class="list-group-item"><span class="label">Call duration:</span> {{transcriptionData.callDuration}}</li>
+                <li class="list-group-item"><span class="label">Call started:</span> {{transcriptionData.callStarted}}</li>
+                <li class="list-group-item"><span class="label">Call finished </span> {{transcriptionData.callFinished}}</li>
+                <br/>
+                <h4>
+                  Messages: 
+                </h4>
+                <li v-for="msg in transcriptionData.transcriptionMessages" class="list-group-item message">
                     <div class="header">
-                        <span>{{ msg.date }}</span>
-                        <span>{{ msg.userName }}</span>
+                      <span><span class="label">id: </span>{{ msg.id }}</span>
+                      <span><span class="label">offset: </span>{{ msg.offset }}</span>
+                      <span><span class="label">user: </span>{{ msg.userName }}</span>
+                      <span><span class="label">text: </span>{{msg.text}}</span>
+                      <span><span class="label">sent date: </span>{{ msg.date }}</span>
                     </div>
-                    <div class="transcription">{{msg.text}}</div>
                     <div class="links">
                         <a v-bind:href="msg.fullUrl" target="_blank">full</a>
                         <a v-bind:href="msg.overlayUrl" target="_blank">overlay</a>
